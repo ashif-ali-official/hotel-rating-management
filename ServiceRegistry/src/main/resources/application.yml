@@ -1,0 +1,15 @@
+#Service related information
+server:
+  port: 9091
+
+spring:
+  application:
+    name: SERVICE-REGISTRY
+
+#Eureka related configurations
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false

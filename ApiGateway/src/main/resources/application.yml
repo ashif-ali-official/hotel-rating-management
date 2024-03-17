@@ -1,0 +1,38 @@
+#Service related information
+server:
+  port: 9092
+ 
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: USER-SERVICE
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+            
+        - id: HOTEL-SERVICE
+          uri: http://localhost:8082
+          predicates:
+            - Path=/hotels/**
+            
+        - id: RATING-SERVICE
+          uri: http://localhost:8083
+          predicates:
+            - Path=/ratings/**
+
+  config:
+    import: optional:configserver:http://localhost:9093 
+    
+#Eureka related configurations
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:9091/eureka
+#  instance:
+#    prefer-ip-address: true
